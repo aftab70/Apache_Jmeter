@@ -1,4 +1,6 @@
-#How to install jmeter in ubuntu 16.04/18.04
+#!/bin/bash
+
+
 apt-get install default-jre -y
 apt-get install default-jdk -y
 apt-get install curl -y
