@@ -1,10 +1,23 @@
 #How to install jmeter in ubuntu 16.04/18.04
-sudo apt-get install default-jre
+apt-get install default-jre -y
+apt-get install default-jdk -y
+apt-get install curl -y
 mkdir /opt/jmeter
 cd /opt/jmeter
 wget http://mirrors.estointernet.in/apache//jmeter/binaries/apache-jmeter-5.1.1.zip
 unzip apache-jmeter-5.1.1.zip
-sh /opt/jmeter/apache-jmeter-5.1.1/bin/jmeter.sh
+apt-get update -y
+apt-get install -y unzip xvfb libxi6 libgconf-2-4 -y
+curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+apt-get -y update
+apt-get -y install google-chrome-stable
+wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+mv chromedriver /usr/bin/chromedriver
+sudo chown root:root /usr/bin/chromedriver
+chmod +x /usr/bin/chromedriver
+sudo sh /opt/jmeter/apache-jmeter-5.1.1/bin/jmeter.sh
 
 
 
