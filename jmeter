@@ -17,6 +17,10 @@ unzip chromedriver_linux64.zip
 mv chromedriver /usr/bin/chromedriver
 sudo chown root:root /usr/bin/chromedriver
 chmod +x /usr/bin/chromedriver
+cd /opt/jmeter/apache-jmeter-5.1.1
+wget https://jmeter-plugins.org/files/packages/jpgc-webdriver-3.0.zip
+unzip jpgc-webdriver-3.0.zip
+nan 
 sudo sh /opt/jmeter/apache-jmeter-5.1.1/bin/jmeter.sh
 
 
