@@ -1,0 +1,9 @@
+#How to install jmeter in ubuntu 16.04/18.04
+mkdir /opt/jmeter
+cd /opt/jmeter
+wget http://mirrors.estointernet.in/apache//jmeter/binaries/apache-jmeter-5.1.1.zip
+unzip apache-jmeter-5.1.1.zip
+sh /opt/jmeter/apache-jmeter-5.1.1/bin/jmeter.sh
+
+
+
