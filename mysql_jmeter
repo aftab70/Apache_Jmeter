@@ -1,0 +1,19 @@
+Step 1:- Download the required JDBC connector jar from 
+https://cdn.mysql.com//Downloads/Connector-J/mysql-connector-java-8.0.18.zip
+
+Step 2 :- unpack and copy mysql jar to apache jmeter lib diretory and restart the jmeter.
+
+Step 3:- Add threads Group
+
+Step 4 :- Add JDBC Connection Configuration
+
+Database URL:- jdbc:mysql://IP_Address:3307/DATABASE_NAME
+Username:- 
+Password:- 
+
+
+Step 5 :- Add JDBC request
+
+Step 6:- Add Summary Report 
+
+Step 6 :- Add View Result Tree
