@@ -28,3 +28,23 @@ Output : 0 (disabled by default)
 Note: The tcp_tw_reuse setting is particularly useful in environments where numerous short connections are open and left in TIME_WAIT state, such as web servers. Reusing the sockets can be very effective in reducing server load.
 
 After enabling fast recycling and reuse the server could support 5K user Load with single Unix box.
+
+
+
+####################################################################################################################################
+
+
+I believe that you're facing the issue described in Connection Reset since JMeter 2.10 ? JMeter wiki page. If you're completely sure that the behavior of your application under test is correct and nothing needs to be tuned or tweaked on the backend side you can configure JMeter to retry refused connections and check for stale connections:
+
+Change "Implementation" of all your HTTP Request samplers to HttpClient4. The easiest way of doing it is using HTTP Request Defaults configuration element.
+Add the following properties in user.properties file which located under /bin folder of your JMeter installation:
+
+httpclient4.retrycount=1
+hc.parameters.file=hc.parameters
+Add the next line to hc.parameters file (same location, JMeter's /bin folder)
+
+http.connection.stalecheck$Boolean=true
+Restart JMeter.
+
+
+###################################################################################################################################
