@@ -1,0 +1,30 @@
+Resolution:
+
+Increased the local port range using below command:
+echo 1024 65000 > /proc/sys/net/ipv4/ip_local_port_range
+
+This allows more local ports to be available.
+
+Enable fast recycling TIME_WAIT sockets as below:
+$ sudo sysctl -w net.ipv4.tcp_tw_recycle =1
+
+By default,
+
+cat /proc/sys/net/ipv4/tcp_tw_recycle
+
+Output : 0 (disabled by default)
+
+Be cautious if enabled in production environments, since this is our internal Environment and machine used only for Jmeter load tests, we enabled recycle and resolved the issue.
+
+Enable reuse of sockets as below:
+$ sudo sysctl -w net.ipv4.tcp_tw_reuse=1
+
+By default,
+
+cat /proc/sys/net/ipv4/tcp_tw_reuse
+
+Output : 0 (disabled by default)
+
+Note: The tcp_tw_reuse setting is particularly useful in environments where numerous short connections are open and left in TIME_WAIT state, such as web servers. Reusing the sockets can be very effective in reducing server load.
+
+After enabling fast recycling and reuse the server could support 5K user Load with single Unix box.
